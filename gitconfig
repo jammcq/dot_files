@@ -1,0 +1,12 @@
+[user]
+	name = Jim McQuillan
+	email = jam@Avairis.com
+[core]
+	editor = vim
+[color "status"]
+        modified = blue
+        changed = blue
+        added = blue
+        untracked = yellow
+[color "diff"]
+	old = yellow
