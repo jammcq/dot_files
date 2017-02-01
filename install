@@ -1,0 +1,70 @@
+#!/bin/bash
+
+#-------------------------------------------------------------------------------
+
+echo "bashrc"
+if [ -f ~/.bashrc -a ! -L ~/.bashrc ]; then
+  echo " Moving original .bashrc out of the way"
+  mv ~/.bashrc ~/.bashrc.orig
+fi
+
+if [ ! -L ~/.bashrc ]; then
+  echo " Linking new .bashrc from dot_files"
+  ln -s ~/dot_files/bashrc ~/.bashrc
+fi
+
+#-------------------------------------------------------------------------------
+
+echo "gitconfig"
+if [ -f ~/.gitconfig -a ! -L ~/.gitconfig ]; then
+  echo " Moving original .gitconfig out of the way"
+  mv ~/.gitconfig ~/.gitconfig.orig
+fi
+
+if [ ! -L ~/.gitconfig ]; then
+  echo " Linking new .gitconfig from dot_files"
+  ln -s ~/dot_files/gitconfig ~/.gitconfig
+fi
+
+#-------------------------------------------------------------------------------
+
+echo "profile"
+if [ -f ~/.profile -a ! -L ~/.profile ]; then
+  echo " Moving original .profile out of the way"
+  mv ~/.profile ~/.profile.orig
+fi
+
+if [ ! -L ~/.profile ]; then
+  echo " Linking new .profile from dot_files"
+  ln -s ~/dot_files/profile ~/.profile
+fi
+
+#-------------------------------------------------------------------------------
+
+echo "psqlrc"
+if [ -f ~/.psqlrc -a ! -L ~/.psqlrc ]; then
+  echo " Moving original .psqlrc out of the way"
+  mv ~/.psqlrc ~/.psqlrc.orig
+fi
+
+if [ ! -L ~/.psqlrc ]; then
+  echo " Linking new .psqlrc from dot_files"
+  ln -s ~/dot_files/psqlrc ~/.psqlrc
+fi
+
+#-------------------------------------------------------------------------------
+
+echo "vimrc"
+if [ -f ~/.vimrc -a ! -L ~/.vimrc ]; then
+  echo " Moving original .vimrc out of the way"
+  mv ~/.vimrc ~/.vimrc.orig
+fi
+
+if [ ! -L ~/.vimrc ]; then
+  echo " Linking new .vimrc from dot_files"
+  ln -s ~/dot_files/vimrc ~/.vimrc
+fi
+
+#-------------------------------------------------------------------------------
+
+

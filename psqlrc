@@ -1,0 +1,4 @@
+\set QUIET on
+\pset null '(null)'
+\pset format wrapped
+\set QUIET off
