@@ -10,3 +10,7 @@
         untracked = yellow
 [color "diff"]
 	old = yellow
+[push]
+	default = simple
+[rerere]
+	enabled = 1
