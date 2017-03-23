@@ -128,3 +128,5 @@ if [ -f ~/.git-prompt.sh ]; then
   export GIT_PS1_UPSTREAM="auto"
   export GIT_PS1_SHOWCOLORHINTS=1
 fi
+
+umask 002
