@@ -121,8 +121,8 @@ EDITOR=vim
 FCEDIT=vim
 VISUAL=vim
 
-if [ -f ~/.git-prompt.sh ]; then
-  . .git-prompt.sh
+if [ -f ~/dot_files/git-prompt.sh ]; then
+  . ~/dot_files/git-prompt.sh
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
   export GIT_PS1_UPSTREAM="auto"
