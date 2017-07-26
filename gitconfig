@@ -14,3 +14,7 @@
 	default = simple
 [rerere]
 	enabled = 1
+[alias]
+	lg  = log --format='%h %cd %s' --date=local
+	lgu = log --format='%h %cd %<(15,trunc) %cn %s' --date=local
+	pick = cherry-pick -x
