@@ -21,4 +21,4 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-PATH=/usr/local/Avairis/bin:$PATH; export PATH
+PATH=~/workflow/bin:/usr/local/Avairis/bin:$PATH; export PATH
