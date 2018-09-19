@@ -5,3 +5,4 @@
 :set background=dark
 :hi special ctermfg=magenta
 :set modeline
+:set belloff=all
