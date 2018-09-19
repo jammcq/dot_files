@@ -112,6 +112,7 @@ alias grep='/bin/grep --color=auto --exclude=*\.svn* --exclude-dir=*\.git'
 
 alias cba='cd /usr/local/Avairis'
 alias lc='ls -C --color=yes'
+alias ls='ls --color=never'
 
 HISTSIZE=5000
 HISTFILESIZE=5000
