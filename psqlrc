@@ -1,4 +1,5 @@
 \set QUIET on
+\set HISTSIZE 5000
 \pset null '(null)'
 \pset format wrapped
 \set QUIET off
