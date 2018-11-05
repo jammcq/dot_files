@@ -5,6 +5,4 @@
 :set background=dark
 :hi special ctermfg=magenta
 :set modeline
-if has("belloff")
-  set belloff=all
-endif
+silent!  set belloff=all
