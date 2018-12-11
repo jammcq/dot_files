@@ -15,9 +15,10 @@
 [rerere]
 	enabled = 1
 [alias]
-	lg   = log --pretty='format:"%C(auto)%h %<(25)%cd %s"' --date=local
-	lgnc = log --pretty='format:"%h %<(25)%cd %s"' --date=local
-	lgu  = log --pretty='format:"%C(auto)%h %<(25)%cd %<(15,trunc)%cn  %s"' --date=local
-        lgf  = diff-tree --abbrev-commit --abbrev=7 --name-only -r
-	pick = cherry-pick -x
+	lg    = log --pretty='format:"%C(auto)%h  %<(25)%cd %s"' --date=local
+	lgnc  = log --pretty='format:"%h   %<(25)%cd %s"' --date=local
+	lgu   = log --pretty='format:"%C(auto)%h %<(25)%cd %<(15,trunc)%cn  %s"' --date=local
+	lgunc = log --pretty='format:"%h   %<(25)%cd %<(15,trunc)%cn  %s"' --date=local
+        lgf   = diff-tree --abbrev-commit --abbrev=7 --name-only -r
+	pick  = cherry-pick -x
 
