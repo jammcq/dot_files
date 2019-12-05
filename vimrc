@@ -5,4 +5,6 @@
 :set background=dark
 :hi special ctermfg=magenta
 :set modeline
+:set statusline=%f
+:set laststatus=2
 silent!  set belloff=all
