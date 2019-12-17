@@ -5,7 +5,7 @@
 :set background=dark
 :hi special ctermfg=magenta
 :set modeline
-:set statusline=%F\ %m%=line\ %l\ of\ %L\ \ --%p%%--\ 
+:set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ 
 :set laststatus=2
 silent!  set belloff=all
 
