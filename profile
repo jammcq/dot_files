@@ -21,4 +21,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-PATH=~/workflow/bin:/usr/local/Avairis/bin:$PATH; export PATH
+PATH=~/bin:~/workflow/bin:/usr/local/Avairis/bin:$PATH; export PATH
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
