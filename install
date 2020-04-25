@@ -67,4 +67,15 @@ fi
 
 #-------------------------------------------------------------------------------
 
+echo "inputrc"
+if [ -f ~/.inputrc -a ! -L ~/.inputrc ]; then
+  echo " Moving original .inputrc out of the way"
+  mv ~/.inputrc ~/.inputrc.orig
+fi
 
+if [ ! -L ~/.inputrc ]; then
+  echo " Linking new .inputrc from dot_files"
+  ln -s ~/dot_files/inputrc ~/.inputrc
+fi
+
+#-------------------------------------------------------------------------------
