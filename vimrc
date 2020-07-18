@@ -7,6 +7,9 @@
 :set modeline
 :set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ 
 :set laststatus=2
+
+" Turn off bell
+:set vb t_vb=
 silent!  set belloff=all
 
 "highlight ExtraWhitespace ctermbg=red guibg=red
