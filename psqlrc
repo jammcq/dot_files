@@ -2,5 +2,6 @@
 \set HISTSIZE 5000
 \pset null '(null)'
 \pset format wrapped
+\set HISTFILE ~/.psql_history- :DBNAME
 \set QUIET off
 \timing on
