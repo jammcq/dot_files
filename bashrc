@@ -113,6 +113,33 @@ alias grep='/bin/grep --color=auto --exclude=*\.svn* --exclude-dir=*\.git'
 alias cba='cd /usr/local/Avairis'
 alias lc='ls -C --color=yes'
 alias ls='ls --color=never'
+alias htidy='tidy --indent yes                 \
+                  --indent-spaces 2            \
+                  --indent-attributes yes      \
+                  --uppercase-tags yes         \
+                  --output-html yes            \
+                  --uppercase-attributes yes   \
+                  --priority-attributes TYPE   \
+                  --sort-attributes alpha      \
+                  --drop-empty-elements no     \
+                  --merge-divs no              \
+                  --merge-spans no             \
+                  --drop-empty-elements no     \
+                  --drop-empty-paras no        \
+                  --coerce-endtags no          \
+                  --fix-style-tags no          \
+                  --join-styles no             \
+                  --merge-emphasis no          \
+                  --break-before-br yes        \
+                  --wrap 0                     \
+                  -quiet                       \
+                  --mute-id yes                \
+                  --mute PROPRIETARY_ATTRIBUTE \
+                  --mute MISSING_DOCTYPE       \
+                  --mute INSERTING_TAG         \
+                  --mute INVALID_UTF8          \
+                  --mute MISSING_TITLE_ELEMENT \
+                  --output-file /tmp/x.html'
 
 HISTSIZE=5000
 HISTFILESIZE=5000
