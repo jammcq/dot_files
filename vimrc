@@ -2,7 +2,8 @@
 :set scrolloff=2
 :set nowrapscan
 :set nowrap
-:set background=dark
+:colorscheme elflord
+":set background=dark
 :hi special ctermfg=magenta
 :set modeline
 :set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ 
