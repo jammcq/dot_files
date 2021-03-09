@@ -9,6 +9,14 @@
 :set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ 
 :set laststatus=2
 
+"
+" display tabs, trailing spaces and non-breaking spaces
+" as special chars (from Damian Conway OSCON 2013)
+"
+:exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+:set list
+
+
 " Turn off bell
 :set vb t_vb=
 silent!  set belloff=all
