@@ -1,2 +1,2 @@
-"\eh":backward-word
-"\el":forward-word
+"\eh":shell-backward-word
+"\el":shell-forward-word
