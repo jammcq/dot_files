@@ -1,24 +1,25 @@
 [user]
-	name = Jim McQuillan
-	email = jam@Avairis.com
+        name = Jim McQuillan
+        email = jam@Avairis.com
 [core]
-	editor = vim
+        editor = vim
 [color "status"]
         modified = blue
         changed = blue
         added = blue
         untracked = yellow
 [color "diff"]
-	old = yellow
+        old = yellow
 [push]
-	default = simple
+        default = simple
 [rerere]
-	enabled = 1
+        enabled = 1
 [alias]
-	lg  = log --pretty='format:"%C(auto)%h %<(25)%ci %s"'
-	lgnc  = log --pretty='format:"%h   %<(25)%cd %s"' --date=local
-	lgu = log --pretty='format:"%C(auto)%h %<(25)%ci %<(15,trunc)%cn  %s"'
-	lgunc = log --pretty='format:"%h   %<(25)%cd %<(15,trunc)%cn  %s"' --date=local
-        lgf = diff-tree --abbrev-commit --abbrev=7 --name-only -r
-	rl  = reflog --pretty='format:"%C(auto)%h %<(9)%gd %<(19)%ci %<(15)%cr %gs"'
-	pick = cherry-pick -x
+        lg    = log --pretty='format:"%C(auto)%h %<(25)%ci %s"'
+        lgnc  = log --pretty='format:"%h   %<(25)%cd %s"' --date=local
+        lgu   = log --pretty='format:"%C(auto)%h %<(25)%ci %<(15,trunc)%cn  %s"'
+        lgunc = log --pretty='format:"%h   %<(25)%cd %<(15,trunc)%cn  %s"' --date=local
+        lgf   = diff-tree --abbrev-commit --abbrev=7 --name-only -r
+        lgd   = log --oneline --all --graph --decorate --pretty='format:"%C(yellow)%h%Creset  %<(25)%cd %s"' --date=local
+        rl    = reflog --pretty='format:"%C(auto)%h %<(9)%gd %<(19)%ci %<(15)%cr %gs"'
+        pick  = cherry-pick -x
