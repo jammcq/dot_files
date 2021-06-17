@@ -79,3 +79,16 @@ if [ ! -L ~/.inputrc ]; then
 fi
 
 #-------------------------------------------------------------------------------
+
+echo "tmux.conf"
+if [ -f ~/.tmux.conf -a ! -L ~/.tmux.conf ]; then
+  echo " Moving original .tmux.conf out of the way"
+  mv ~/.tmux.conf ~/.tmux.conf.orig
+fi
+
+if [ ! -L ~/.tmux.conf ]; then
+  echo " Linking new .tmux.conf from dot_files"
+  ln -s ~/dot_files/tmux.conf ~/.tmux.conf
+fi
+
+#-------------------------------------------------------------------------------

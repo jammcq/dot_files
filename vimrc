@@ -27,3 +27,15 @@ silent!  set belloff=all
 "autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 "autocmd BufWinLeave * call clearmatches()
+
+"
+" vim can update the title in the tmux status line
+"
+if exists('$TMUX')
+  autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
+  autocmd VimLeave * call system("tmux setw automatic-rename")
+  set t_ts=]2;
+  set t_fs=\\
+  set title
+endif
+
