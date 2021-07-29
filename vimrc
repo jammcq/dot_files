@@ -44,17 +44,21 @@ if exists('$TMUX')
   set title
 endif
 
+"-------------------------------------------------------------------------------------------------------
 "
-" Functions to clean up JSON structures by aligning the colon character
+" Functions to clean up code by aligning the ':', '=' or 'AS' character
 " on each line into a column.
 "
-function! IndentColAuto() range
+
+function! IndentColLines( char ) range
   let s:mcol   = 1
   let s:lineno = a:firstline
-  while s:lineno <= a:lastline           " Loop through the lines in the range to find the max col
+
+  " Loop through the lines in the range to find the max col
+  while s:lineno <= a:lastline
     let s:line = getline( s:lineno )
-    let s:cidx = stridx( s:line, ':' )   " Find the index of the first ':' on the line
-    let s:col  = s:cidx + 1              " Need to add 1 because index is 0-based
+    let s:cidx = stridx( s:line, a:char )   " Find the index of the first char on the line
+    let s:col  = s:cidx + 1                 " Need to add 1 because index is 0-based
     if s:cidx > 0
       " If the char before the colon is non-blank, add 1
       if strpart( s:line, s:cidx - 1, 1 ) != ' '
@@ -68,18 +72,22 @@ function! IndentColAuto() range
   " Run the IndentCol function using the original range and passing
   " the max col
   "
-  execute a:firstline . "," . a:lastline . 'call IndentCol( s:mcol )'
+  execute a:firstline . "," . a:lastline . 'call IndentColLine( a:char, s:mcol )'
 endfunction
 
-function! IndentCol( col ) range
-  let s:lineno = a:firstline
+
+
+function! IndentColLine( char, col ) range
+  let s:lineno    = a:firstline
+  let s:repl_char = ' ' . a:char
+
   while s:lineno <= a:lastline
     let s:line = getline(s:lineno)
-    let s:ccol = stridx( s:line, ":") + 1
+    let s:ccol = stridx( s:line, a:char ) + 1
     if s:ccol > 0
       while s:ccol < a:col
-        let s:line = substitute( s:line, ":", " :", "" )
-        let s:ccol = stridx( s:line, ':' ) + 1
+        let s:line = substitute( s:line, a:char, s:repl_char, "" )
+        let s:ccol = stridx( s:line, a:char ) + 1
       endwhile
       call setline( s:lineno, s:line )
     endif
@@ -88,6 +96,12 @@ function! IndentCol( col ) range
 endfunction
 
 "
-" Finally, map the <Space>c to call IndentColAuto on the visual range
+" After selecting lines of text, hit the following:
+"  SPACE c       line up column on colon   (Useful in Javascript and json)
+"  SPACE =       line up column on =       (Useful in perl)
+"  SPACE a       line up column on AS      (Useful in SQL select list)
 "
-vnoremap <silent> <Leader>c :call IndentColAuto()<CR>
+vnoremap <silent> <Leader>c :call IndentColLines( ':' )<CR>
+vnoremap <silent> <Leader>e :call IndentColLines( '=' )<CR>
+vnoremap <silent> <Leader>a :call IndentColLines( 'AS' )<CR>
+
