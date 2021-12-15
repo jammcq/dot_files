@@ -98,7 +98,7 @@ endfunction
 "
 " After selecting lines of text, hit the following:
 "  SPACE c       line up column on colon   (Useful in Javascript and json)
-"  SPACE =       line up column on =       (Useful in perl)
+"  SPACE e       line up column on =       (Useful in perl)
 "  SPACE a       line up column on AS      (Useful in SQL select list)
 "
 vnoremap <silent> <Leader>c :call IndentColLines( ':' )<CR>
