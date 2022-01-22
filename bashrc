@@ -19,6 +19,8 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+shopt -s cdspell
+
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
@@ -42,14 +44,14 @@ esac
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 if [ "$color_prompt" = yes ]; then
@@ -111,23 +113,85 @@ fi
 # used to reattach ssh forwarding to "stale" tmux sessions
 # http://justinchouinard.com/blog/2010/04/10/fix-stale-ssh-environment-variables-in-gnu-screen-and-tmux/
 function refresh_ssh() {
-    if [[ -n $TMUX ]]; then
-        NEW_SSH_AUTH_SOCK=$(tmux showenv | grep ^SSH_AUTH_SOCK | cut -d = -f 2)
-        if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
-            SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
-        fi
+  if [[ -n $TMUX ]]; then
+    NEW_SSH_AUTH_SOCK=$(tmux showenv | grep ^SSH_AUTH_SOCK | cut -d = -f 2)
+    if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
+      SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
     fi
+  fi
 }
 function ssh_refresh() {
-    if [[ -n $TMUX ]]; then
-        NEW_SSH_AUTH_SOCK=$(tmux showenv | grep ^SSH_AUTH_SOCK | cut -d = -f 2)
-        if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
-            SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
-        fi
+  if [[ -n $TMUX ]]; then
+    NEW_SSH_AUTH_SOCK=$(tmux showenv | grep ^SSH_AUTH_SOCK | cut -d = -f 2)
+    if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
+      SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
     fi
+  fi
+}
+
+function ge(){
+  # "grep and edit"
+  # usage: ge <string>
+  echo "grep --exclude-dir=*\.git -rl "$@" | xargs -o vi"
+  grep --exclude-dir=*\.git -rl "$@" | xargs -o vi
+}
+
+#
+# Functions from Wolf
+#
+function f() { # f <pattern> : list all the files in or below . whose names match the given pattern
+  fd --follow --no-ignore --hidden --glob "$@" 2>/dev/null
+}
+
+function fcat() { # fcat <pattern> : find all the files in or below . whose names match the given pattern and cat them
+  fd --follow --no-ignore --hidden --glob --type f "$@" --exec-batch bat
+}
+
+function fcd() { # fcd <pattern> : find the first directory in or below . whose name matches the given pattern and cd into it
+  # example: fcd js
+  # example: fcd '*venv'
+  # example: fcd --regex 'venv$'
+  local FIRST_MATCHING_DIRECTORY
+
+  FIRST_MATCHING_DIRECTORY="$(fd --follow --no-ignore --hidden --glob --type d --max-results 1 "$@" 2>/dev/null)"
+  if [ -d "${FIRST_MATCHING_DIRECTORY}" ]; then
+    cd "${FIRST_MATCHING_DIRECTORY}" || return
+  fi
+}
+
+function fcd_of { # fcd_of <pattern> : find the first file-system object in or below . whose name matches the given pattern, and cd into the directory that contains it
+  local FIRST_MATCH
+  local PARENT_OF_FIRST_MATCH
+
+  FIRST_MATCH="$(fd --follow --no-ignore --hidden --glob --max-results 1 "$@" 2>/dev/null)"
+  PARENT_OF_FIRST_MATCH="$(dirname "${FIRST_MATCH}")"
+
+  if [ -d "${PARENT_OF_FIRST_MATCH}" ]; then
+    cd "${PARENT_OF_FIRST_MATCH}" || return
+  fi
+}
+
+function fe() { # fe <pattern> : find all the files in or below . whose names match the given pattern and open them in $EDITOR
+  # shellcheck disable=SC2086
+  fd --follow --no-ignore --hidden --glob --type f "$@" --exec-batch ${EDITOR}
+}
+
+function fll() { # fll <pattern> : find all the files in or below . whose names match the given pattern, and list them as would ls -l
+  fd --follow --no-ignore --hidden --glob "$@" --exec-batch exa -Fal
+}
+
+function fsource() { # fsource <pattern> : find all the files in or below . whose names match the given pattern and source them
+  local FILES_TO_SOURCE
+  declare -a FILES_TO_SOURCE
+
+  readarray -d '' FILES_TO_SOURCE < <(fd --follow --no-ignore --hidden --glob --type f --print0 "$@")
+
+  # shellcheck disable=SC1090,SC2086
+  source "${FILES_TO_SOURCE[@]}"
 }
 
 alias grep='/bin/grep --color=auto --exclude-dir=*\.git'
+alias fd='fdfind'
 
 alias cba='cd /usr/local/Avairis'
 alias lc='ls -C --color=yes'
