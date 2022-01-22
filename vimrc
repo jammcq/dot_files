@@ -11,8 +11,45 @@ let mapleader = "\<Space>"
 ":set background=dark
 :hi special ctermfg=magenta
 :set modeline
-:set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ 
+:set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ %a\ 
 :set laststatus=2
+:set expandtab
+:set shiftwidth=2
+vnoremap > >gv
+vnoremap < <gv
+
+" doesn't seem to work
+"augroup open_and_close
+"  autocmd!
+"  autocmd InsertLeave,WinEnter * set cursorline
+"  autocmd InsertEnter,WInLeave * set nocursorline
+"  highlight CursorLine cterm=bold ctermbg=0 ctermfg=14
+"augroup END
+
+" map the Space-Quote keystroke to surround the current word with quotes
+augroup html_file
+  autocmd!
+  autocmd! BufRead,BufNewFile *.tmpl set filetype=html
+  autocmd FileType html nnoremap <buffer> <Leader>" :execute "normal \<Plug>Ysurroundiw\""<CR>
+augroup END
+
+
+highlight Search ctermfg=black ctermbg=blue
+:set hls
+noremap <silent> <C-L> :nohlsearch<CR>     " Turn off the match highlighting until the next search
+
+" Act naturally when lines wrap
+" 2021-12-21 -jam- These act weird when nowrap is set, so... disabling for now
+"nnoremap j  gj
+"nnoremap k  gk
+"nnoremap ^  g^
+"nnoremap 0  g0
+"nnoremap $  g$
+"nnoremap gj j
+"nnoremap gk k
+"nnoremap g^ ^
+"nnoremap g$ $
+"nnoremap g0 0
 
 "
 " display tabs, trailing spaces and non-breaking spaces
@@ -20,7 +57,6 @@ let mapleader = "\<Space>"
 "
 :exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 :set list
-
 
 " Turn off bell
 :set vb t_vb=
@@ -75,8 +111,6 @@ function! IndentColLines( char ) range
   execute a:firstline . "," . a:lastline . 'call IndentColLine( a:char, s:mcol )'
 endfunction
 
-
-
 function! IndentColLine( char, col ) range
   let s:lineno    = a:firstline
   let s:repl_char = ' ' . a:char
@@ -104,4 +138,3 @@ endfunction
 vnoremap <silent> <Leader>c :call IndentColLines( ':' )<CR>
 vnoremap <silent> <Leader>e :call IndentColLines( '=' )<CR>
 vnoremap <silent> <Leader>a :call IndentColLines( 'AS' )<CR>
-
