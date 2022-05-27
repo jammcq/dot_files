@@ -137,6 +137,27 @@ function ge(){
 }
 
 #
+# Find in report and preview/edit
+#
+function frs(){
+  avrt --grep $1                                                | \
+    fzf --preview-window='50%'                                    \
+        --layout=reverse                                          \
+        --preview='avrt --sql_cat $(echo {} | cut -d ':' -f 1)' | \
+    cut -d ':' -f 1                                             | \
+    xargs  -o avrt --sql
+}
+
+function frh(){
+  avrt --grep $1                                                 | \
+    fzf --preview-window='50%'                                     \
+        --layout=reverse                                           \
+        --preview='avrt --html_cat $(echo {} | cut -d ':' -f 1)' | \
+    cut -d ':' -f 1                                              | \
+    xargs  -o avrt --html
+}
+
+#
 # Functions from Wolf
 #
 function f() { # f <pattern> : list all the files in or below . whose names match the given pattern
