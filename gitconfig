@@ -23,3 +23,5 @@
         lgd   = log --oneline --all --graph --decorate --pretty='format:"%C(yellow)%h%Creset  %<(25)%cd %s"' --date=local
         rl    = reflog --pretty='format:"%C(auto)%h %<(9)%gd %<(19)%ci %<(15)%cr %gs"'
         pick  = cherry-pick -x
+[safe]
+	directory = /usr/local/Avairis
