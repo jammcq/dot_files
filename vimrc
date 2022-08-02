@@ -138,3 +138,8 @@ endfunction
 vnoremap <silent> <Leader>c :call IndentColLines( ':' )<CR>
 vnoremap <silent> <Leader>e :call IndentColLines( '=' )<CR>
 vnoremap <silent> <Leader>a :call IndentColLines( 'AS' )<CR>
+
+autocmd FileType perl setlocal commentstring=#\ %s
+autocmd FileType bash setlocal commentstring=#\ %s
+autocmd FileType html setlocal commentstring=//\ %s
+autocmd FileType javascript setlocal commentstring=//\ %s
