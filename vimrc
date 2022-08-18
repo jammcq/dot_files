@@ -136,7 +136,11 @@ endfunction
 "  SPACE a       line up column on AS      (Useful in SQL select list)
 "
 vnoremap <silent> <Leader>c :call IndentColLines( ':' )<CR>
+vnoremap <silent> <Leader>: :call IndentColLines( ':' )<CR>
+
 vnoremap <silent> <Leader>e :call IndentColLines( '=' )<CR>
+vnoremap <silent> <Leader>= :call IndentColLines( '=' )<CR>
+
 vnoremap <silent> <Leader>a :call IndentColLines( 'AS' )<CR>
 
 autocmd FileType perl setlocal commentstring=#\ %s
