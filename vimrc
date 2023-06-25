@@ -51,6 +51,20 @@ noremap <silent> <C-L> :nohlsearch<CR>     " Turn off the match highlighting unt
 "nnoremap g$ $
 "nnoremap g0 0
 
+
+" Act naturally when lines wrap
+nnoremap j gj
+nnoremap k gk
+" nnoremap ^ g^
+" nnoremap 0 g0
+" nnoremap $ g$
+nnoremap gj j
+nnoremap gk k
+" nnoremap g^ ^
+" nnoremap g$ $
+" nnoremap g0 0
+
+
 "
 " display tabs, trailing spaces and non-breaking spaces
 " as special chars (from Damian Conway OSCON 2013)
