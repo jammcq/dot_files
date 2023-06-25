@@ -104,7 +104,9 @@ function! IndentColLines( char ) range
   let s:mcol   = 1
   let s:lineno = a:firstline
 
+  "
   " Loop through the lines in the range to find the max col
+  "
   while s:lineno <= a:lastline
     let s:line = getline( s:lineno )
     let s:cidx = stridx( s:line, a:char )   " Find the index of the first char on the line
@@ -145,12 +147,20 @@ endfunction
 
 "
 " After selecting lines of text, hit the following:
-"  SPACE c       line up column on colon   (Useful in Javascript and json)
-"  SPACE e       line up column on =       (Useful in perl)
-"  SPACE a       line up column on AS      (Useful in SQL select list)
+"  SPACE c or :    line up column on colon   (Useful in Javascript and json)
+"  SPACE e or =    line up column on =       (Useful in perl)
+"  SPACE g or >    line up column on =>      (Useful in perl)
+"  SPACE a         line up column on AS      (Useful in SQL select list)
 "
 vnoremap <silent> <Leader>c :call IndentColLines( ':' )<CR>
+vnoremap <silent> <Leader>: :call IndentColLines( ':' )<CR>
+
 vnoremap <silent> <Leader>e :call IndentColLines( '=' )<CR>
+vnoremap <silent> <Leader>= :call IndentColLines( '=' )<CR>
+
+vnoremap <silent> <Leader>g :call IndentColLines( '=>' )<CR>
+vnoremap <silent> <Leader>> :call IndentColLines( '=>' )<CR>
+
 vnoremap <silent> <Leader>a :call IndentColLines( 'AS' )<CR>
 
 autocmd FileType perl setlocal commentstring=#\ %s
