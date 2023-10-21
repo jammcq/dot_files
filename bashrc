@@ -245,6 +245,8 @@ alias htidy='tidy --indent yes                 \
                   --mute MISSING_TITLE_ELEMENT \
                   --output-file /tmp/x.html'
 
+alias stsb='git status -sb'
+
 HISTSIZE=5000
 HISTFILESIZE=5000
 HISTTIMEFORMAT='%F %T '
