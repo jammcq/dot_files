@@ -11,7 +11,7 @@ let mapleader = "\<Space>"
 ":set background=dark
 :hi special ctermfg=magenta
 :set modeline
-:set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ %a\ 
+:set statusline=%F\ %m%=offset:%o\ \ col:%c\ \ line:%l/%L\ \ --%p%%--\ %a\ 
 :set laststatus=2
 :set expandtab
 :set shiftwidth=2
