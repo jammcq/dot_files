@@ -13,8 +13,9 @@ let mapleader = "\<Space>"
 :set modeline
 :set statusline=%F\ %m%=offset:%o\ \ col:%c\ \ line:%l/%L\ \ --%p%%--\ %a\ 
 :set laststatus=2
-:set expandtab
+":set expandtab
 :set shiftwidth=2
+:set tabstop=2
 vnoremap > >gv
 vnoremap < <gv
 
