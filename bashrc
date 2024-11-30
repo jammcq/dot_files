@@ -247,8 +247,8 @@ alias htidy='tidy --indent yes                 \
 
 alias stsb='git status -sb'
 
-HISTSIZE=5000
-HISTFILESIZE=5000
+HISTSIZE=-1
+HISTFILESIZE=-1
 HISTTIMEFORMAT='%F %T '
 
 EDITOR=vim
