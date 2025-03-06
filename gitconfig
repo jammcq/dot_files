@@ -29,3 +29,16 @@
 	directory = /usr/local/AvService
 [log]
 	follow = true
+[column]
+#	ui = auto
+[branch]
+	sort = -committerdate
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	renames = true
+	mnemonicPrefix = true
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
