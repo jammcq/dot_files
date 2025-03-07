@@ -27,6 +27,7 @@
 	directory = /usr/local/Avairis
 	directory = /usr/local/AvInsights
 	directory = /usr/local/AvService
+	directory = /usr/local/AvPortal
 [log]
 	follow = true
 [column]
