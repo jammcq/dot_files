@@ -247,6 +247,14 @@ alias htidy='tidy --indent yes                 \
 
 alias stsb='git status -sb'
 
+#
+# dps = docker ps with a bunch of formatting
+# Look at the following links:
+#   https://docs.docker.com/engine/cli/formatting/
+#   https://pkg.go.dev/text/template#pkg-overview
+#
+alias dps="docker ps --format 'table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{join ( slice ( split ( join ( slice ( split .Ports \", \" ) 0 1  ) \"\" ) \":\" ) 1 ) \"\"}}\t{{.Names}}'"
+
 HISTSIZE=-1
 HISTFILESIZE=-1
 HISTTIMEFORMAT='%F %T '

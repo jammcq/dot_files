@@ -29,7 +29,7 @@
 	directory = /usr/local/AvService
 	directory = /usr/local/AvPortal
 	directory = /usr/local/Avairis
-	directory = /usr/local/AvService
+	directory = /srv/client_configs
 [log]
 	follow = true
 [column]
