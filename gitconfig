@@ -28,6 +28,7 @@
 	directory = /usr/local/AvInsights
 	directory = /usr/local/AvService
 	directory = /usr/local/AvPortal
+	directory = /srv/client_configs
 [log]
 	follow = true
 [column]
