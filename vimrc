@@ -25,6 +25,10 @@ let mapleader = "\<Space>"
 ":set expandtab
 :set shiftwidth=2
 :set tabstop=2
+
+:set undofile
+:set undodir=~/.config/vim_undo/
+
 vnoremap > >gv
 vnoremap < <gv
 
