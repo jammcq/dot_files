@@ -3,6 +3,15 @@
 "
 let mapleader = "\<Space>"
 
+"
+" Don't have the screen switch to the alternate screen when starting
+" I'd rather have it leave whatever I last saw in Vim on the screen
+" when I exit
+"
+:set t_ti=
+:set t_te=
+
+
 :let loaded_matchparen = 1
 :set scrolloff=2
 :set nowrapscan
@@ -11,10 +20,15 @@ let mapleader = "\<Space>"
 ":set background=dark
 :hi special ctermfg=magenta
 :set modeline
-:set statusline=%F\ %m%=col:%c\ \ line:%l/%L\ \ --%p%%--\ %a\ 
+:set statusline=%F\ %m%=offset:%o\ \ col:%c\ \ line:%l/%L\ \ --%p%%--\ %a\ 
 :set laststatus=2
-:set expandtab
+":set expandtab
 :set shiftwidth=2
+:set tabstop=2
+
+:set undofile
+:set undodir=~/.config/vim_undo/
+
 vnoremap > >gv
 vnoremap < <gv
 
@@ -69,8 +83,8 @@ nnoremap gk k
 " display tabs, trailing spaces and non-breaking spaces
 " as special chars (from Damian Conway OSCON 2013)
 "
-:exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-:set list
+""":exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+""":set list
 
 " Turn off bell
 :set vb t_vb=
@@ -167,3 +181,5 @@ autocmd FileType perl setlocal commentstring=#\ %s
 autocmd FileType bash setlocal commentstring=#\ %s
 autocmd FileType html setlocal commentstring=//\ %s
 autocmd FileType javascript setlocal commentstring=//\ %s
+
+:set nolist
