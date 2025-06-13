@@ -42,6 +42,6 @@
 	renames = true
 	mnemonicPrefix = true
 [help]
-	autocorrect = prompt
+##	autocorrect = prompt
 [commit]
 	verbose = true
