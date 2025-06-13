@@ -25,5 +25,4 @@
         pick  = cherry-pick -x
 [safe]
 	directory = /usr/local/Avairis
-	directory = /usr/local/AvInsights
 	directory = /usr/local/AvService
