@@ -29,6 +29,7 @@
 	directory = /usr/local/AvPortal
 	directory = /usr/local/Avairis
 	directory = /srv/client_configs
+	directory = /usr/local/AvPortalVite
 [log]
 	follow = true
 [column]
