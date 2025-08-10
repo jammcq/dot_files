@@ -211,7 +211,7 @@ function fsource() { # fsource <pattern> : find all the files in or below . whos
   source "${FILES_TO_SOURCE[@]}"
 }
 
-alias grep='/bin/grep --color=auto --exclude-dir=*\.git'
+alias grep='/bin/grep --color=auto --exclude-dir=*\.git --binary-files=without-match'
 alias fd='fdfind'
 
 alias cba='cd /usr/local/Avairis'
