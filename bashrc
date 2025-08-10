@@ -215,6 +215,8 @@ alias grep='/bin/grep --color=auto --exclude-dir=*\.git'
 alias fd='fdfind'
 
 alias cba='cd /usr/local/Avairis'
+alias cbd='cd /srv/client_data'
+alias cbc='cd /srv/client_configs'
 alias lc='ls -C --color=yes'
 alias ls='ls --color=never'
 alias htidy='tidy --indent yes                 \
