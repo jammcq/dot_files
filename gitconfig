@@ -24,14 +24,11 @@
         rl    = reflog --pretty='format:"%C(auto)%h %<(9)%gd %<(19)%ci %<(15)%cr %gs"'
         pick  = cherry-pick -x
 [safe]
-	directory = /usr/local/Avairis
-	directory = /usr/local/AvService
-	directory = /usr/local/AvPortal
-	directory = /usr/local/Avairis
 	directory = /srv/client_configs
+	directory = /usr/local/AvPortal
 	directory = /usr/local/AvPortalVite
-	directory = /usr/local/Avairis
 	directory = /usr/local/AvService
+	directory = /usr/local/Avairis
 [log]
 	follow = true
 [column]
