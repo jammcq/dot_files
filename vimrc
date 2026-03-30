@@ -16,7 +16,8 @@ let mapleader = "\<Space>"
 :set scrolloff=2
 :set nowrapscan
 :set nowrap
-:colorscheme elflord
+":colorscheme elflord
+:colorscheme evening
 ":set background=dark
 :hi special ctermfg=magenta
 :set modeline
