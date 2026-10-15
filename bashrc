@@ -273,4 +273,6 @@ if [ -f ~/dot_files/git-prompt.sh ]; then
   export GIT_PS1_SHOWCOLORHINTS=1
 fi
 
+eval "$(starship init bash)"
+
 umask 002
